@@ -1,4 +1,5 @@
 from flask import Flask
+from secrets import getSecret
 
 import os
 import socket
@@ -16,5 +17,12 @@ def hello():
            "</body>"
 
     return html.format(hostname=socket.gethostname())
+
+@app.route("/secrets")
+def getSecret():
+    secretsJson = getSecret()
+    return secretsJson
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
