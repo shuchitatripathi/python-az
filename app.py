@@ -1,5 +1,5 @@
 from flask import Flask
-from secrets import getSecret
+import secrets as secrets
 
 import os
 import socket
@@ -20,7 +20,7 @@ def hello():
 
 @app.route("/secrets")
 def getSecret():
-    secretsJson = getSecret()
+    secretsJson = secrets.getSecret()
     return secretsJson
 
 
