@@ -18,7 +18,7 @@ def hello():
 
     return html.format(hostname=socket.gethostname())
 
-@app.route("/")
+@app.route("/secrets")
 def getSecrets():
     jsonOutput = secrets.getSecret()
 
