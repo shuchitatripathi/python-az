@@ -1,5 +1,5 @@
 from flask import Flask
-import secrets as secrets
+import test as test
 
 import os
 import socket
