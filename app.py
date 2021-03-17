@@ -20,8 +20,9 @@ def hello():
 
 @app.route("/secrets")
 def getSecret():
-    secretsJson = secrets.getSecret()
-    return secretsJson
+    #secretsJson = secrets.getSecret()
+    #return secretsJson
+    return "Hello"
 
 
 if __name__ == "__main__":
