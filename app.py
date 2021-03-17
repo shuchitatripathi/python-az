@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 port = int(os.environ.get('PORT', 5000))
 
-@app.route("/test")
+@app.route("/")
 def hello():
     html = "<body style=\"background-color:lightgray;\">" \
            "<h2 style=\"background-color:lightgray;\" >Hello from Python!</h2>" \
@@ -18,7 +18,7 @@ def hello():
 
     return html.format(hostname=socket.gethostname())
 
-@app.route("/")
+@app.route("/jsonSecret")
 def getSecrets():
     jsonOutput = secrets.getSecret()
 
