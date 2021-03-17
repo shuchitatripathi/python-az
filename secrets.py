@@ -1,18 +1,18 @@
 import os
 import cmd
 import json
-from azure.keyvault.secrets import SecretClient
-from azure.identity import DefaultAzureCredential
+#from azure.keyvault.secrets import SecretClient
+#from azure.identity import DefaultAzureCredential
 
 def getSecret():
-    keyVaultName = os.environ["KEY_VAULT_NAME"]
-    KVUri = f"https://{keyVaultName}.vault.azure.net"
+    #keyVaultName = os.environ["KEY_VAULT_NAME"]
+    #KVUri = f"https://{keyVaultName}.vault.azure.net"
 
-    credential = DefaultAzureCredential()
-    client = SecretClient(vault_url=KVUri, credential=credential)
+    #credential = DefaultAzureCredential()
+    #client = SecretClient(vault_url=KVUri, credential=credential)
 
     #print(f"Retrieving your secret from {keyVaultName}.")
-    retrieved_secret = client.get_secret("kvtest1")
+    #retrieved_secret = client.get_secret("kvtest1")
     #print(f"Your secret is '{retrieved_secret.value}'.")
 
     temp_json = {}
@@ -24,7 +24,6 @@ def getSecret():
     rt2 = {"name" : "aseRT", "id" : "aseRT-id"}
 
     rt = [rt1, rt2]
-    print
 
     #temp_json['testval'] = retrieved_secret.value
     #temp_json['vnet-info'] = client.get_secret("routeable-vnet").value
@@ -54,6 +53,3 @@ def getSecret():
     final_json["secret-value"] = retrieved_secret.value
     final_json = json.dumps(final_json)
     print(final_json)
-
-if __name__ == "__main__":
-    getSecret()
