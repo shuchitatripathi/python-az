@@ -1,5 +1,5 @@
 from flask import Flask
-from .secrets import secrets as secrets
+#from .secrets import secrets as secrets
 
 import os
 import socket
@@ -16,6 +16,7 @@ def hello():
            "<b>Hostname:</b> {hostname}<br/>" \
            "</body>"
 
-    return html.format(hostname=socket.gethostname())
+    #return html.format(hostname=socket.gethostname())
+    return os.getcwd()
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
