@@ -50,6 +50,6 @@ def getSecret():
     #print(json.loads(temp_json))
 
     final_json["route-table"] = temp_json
-    final_json["secret-value"] = retrieved_secret.value
+    #final_json["secret-value"] = retrieved_secret.value
     final_json = json.dumps(final_json)
     print(final_json)
