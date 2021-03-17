@@ -1,5 +1,5 @@
 from flask import Flask
-import .secrets as secrets
+from .secrets import secrets as secrets
 
 import os
 import socket
