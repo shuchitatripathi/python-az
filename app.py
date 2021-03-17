@@ -17,6 +17,6 @@ def hello():
            "</body>"
 
     #return html.format(hostname=socket.gethostname())
-    return os.getcwd()
+    return os.path.dirname(os.path.realpath(__file__))
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
