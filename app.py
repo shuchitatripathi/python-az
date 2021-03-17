@@ -18,5 +18,11 @@ def hello():
 
     return html.format(hostname=socket.gethostname())
 
+@app.route("/")
+def getSecrets():
+    jsonOutput = secrets.getSecret()
+
+    return jsonOutput
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
