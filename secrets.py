@@ -30,7 +30,7 @@ def getSecret():
     final_json["timestamp"] = timeStampFormatted
     final_json["kvtest1"] = retrieved_secret.value
     final_json["test"] = "test_value"
-    final_json = json.dumps(final_json, indent=2)
+    final_json = json.dumps(final_json, indent=4)
     return final_json
 
 def getFormattedTimestamp():
