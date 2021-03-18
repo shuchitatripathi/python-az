@@ -28,7 +28,7 @@ def getSecret():
         final_json["vnet"] = temp_json
 
     final_json["timestamp"] = timeStampFormatted
-    #final_json["kvtest1"] = retrieved_secret.value
+    final_json["kvtest1"] = retrieved_secret.value
     final_json["test"] = "test_value"
     final_json = json.dumps(final_json)
     return final_json
