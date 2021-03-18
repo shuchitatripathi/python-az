@@ -26,6 +26,7 @@ def getSecret():
 
     final_json["timestamp"] = timeStampFormatted
     #final_json["kvtest1"] = retrieved_secret.value
+    final_json["cred"] = credential
     final_json = json.dumps(final_json)
     return final_json
 
