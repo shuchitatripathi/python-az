@@ -5,11 +5,11 @@ from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
 def getSecret():
-    #keyVaultName = os.environ["KEY_VAULT_NAME"]
-    #KVUri = f"https://{keyVaultName}.vault.azure.net"
+    keyVaultName = os.environ["KEY_VAULT_NAME"]
+    KVUri = f"https://{keyVaultName}.vault.azure.net"
 
     credential = DefaultAzureCredential()
-    print(credential)
+    #print(credential)
     #client = SecretClient(vault_url=KVUri, credential=credential)
 
     #print(f"Retrieving your secret from {keyVaultName}.")
@@ -29,7 +29,8 @@ def getSecret():
     #final_json["kvtest1"] = retrieved_secret.value
     final_json["test"] = "test_value"
     final_json = json.dumps(final_json)
-    return final_json
+    #return final_json
+    return credential
 
 def getFormattedTimestamp():
     formatPattern = '{:%Y-%m-%d %H:%M:%S}'
