@@ -6,15 +6,18 @@ from azure.identity import DefaultAzureCredential
 
 def getSecret():
     keyVaultName = os.environ["KEY_VAULT_NAME"]
+    #AZURE_CLIENT_ID = os.environ["AZURE_CLIENT_ID"]
+    #AZURE_CLIENT_SECRET = os.environ["AZURE_CLIENT_SECRET"]
+    #AZURE_TENANT_ID = os.environ["AZURE_TENANT_ID"]
     KVUri = f"https://{keyVaultName}.vault.azure.net"
 
     credential = DefaultAzureCredential()
-    #print(credential)
-    #client = SecretClient(vault_url=KVUri, credential=credential)
+    print(credential)
+    client = SecretClient(vault_url=KVUri, credential=credential)
 
-    #print(f"Retrieving your secret from {keyVaultName}.")
-    #retrieved_secret = client.get_secret("kvtest1")
-    #print(f"Your secret is '{retrieved_secret.value}'.")
+    print(f"Retrieving your secret from {keyVaultName}.")
+    retrieved_secret = client.get_secret("kvtest1")
+    print(f"Your secret is '{retrieved_secret.value}'.")
     timeStampFormatted = getFormattedTimestamp()
     temp_json = {}
     final_json = {}
