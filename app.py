@@ -21,8 +21,10 @@ def hello():
 @app.route("/jsonSecret")
 def getSecrets():
     jsonOutput = secrets.getSecret()
-
-    return jsonOutput
+    response = flask.Response(jsonOutput)
+    response.headers["Content-Type"] = "application/json"
+    response.headers["App-Version"] = "0.0.1"
+    return response
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
