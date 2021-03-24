@@ -1,6 +1,7 @@
 import os
 import json
 import datetime
+import platform
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
@@ -29,6 +30,7 @@ def getSecret():
 
     final_json["route-tables"] = temp_list
     final_json["timestamp"] = timeStampFormatted
+    final_json["py_version"] = platform.python_version()
     final_json = json.dumps(final_json, indent=4)
     return final_json
 
