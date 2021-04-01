@@ -31,14 +31,14 @@ def getSingleSecret():
     jsonOutput = secrets.getJson()
     print(request.args)
     resource = request.args['resource']
-    #if 'resource' in request.args:
-    #    dictOutput = json.loads(jsonOutput)
-    #    if request.args['resource'] in dictOutput:
-    #        singleSecret = dictOutput[request.args[resource]]
-    #    else:
-    #        singleSecret = "Resource does not exist"
-    #else:
-    #    singleSecret = "No resource given"
+    if 'resource' in request.args:
+        dictOutput = json.loads(jsonOutput)
+        if resource in dictOutput:
+            singleSecret = dictOutput[resource]
+        else:
+            singleSecret = "Resource does not exist"
+    else:
+        singleSecret = "No resource given"
         
     return resource
 
