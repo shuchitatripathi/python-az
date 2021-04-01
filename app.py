@@ -27,7 +27,7 @@ def getSecrets():
     return jsonOutput
 
 @app.route("/getSecret")
-def getSecrets():
+def getSingleSecret():
     jsonOutput = secrets.getJson()
     print(request.args)
     if 'id' in request.args:
