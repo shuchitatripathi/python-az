@@ -18,7 +18,7 @@ def hello():
 
     return html.format(hostname=socket.gethostname())
 
-@app.route("/jsonSecret")
+@app.route("/getJson")
 def getSecrets():
     jsonOutput = secrets.getSecret()
     #response = Flask.Response(jsonOutput)
