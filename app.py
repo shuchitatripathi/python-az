@@ -20,7 +20,7 @@ def hello():
 
 @app.route("/getJson")
 def getSecrets():
-    jsonOutput = secrets.getSecret()
+    jsonOutput = secrets.getJson()
     #response = Flask.Response(jsonOutput)
     #response.headers["Content-Type"] = "application/json"
     #response.headers["App-Version"] = "0.0.1"
