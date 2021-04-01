@@ -173,6 +173,3 @@ def getFormattedTimestamp():
     timeStamp = datetime.datetime.now()
     timeStampFormatted = formatPattern.format(timeStamp)
     return timeStampFormatted
-
-if __name__ == '__main__':
-    getJson()
