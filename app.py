@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import secrets as secrets
 
 import os
@@ -24,6 +24,15 @@ def getSecrets():
     #response = Flask.Response(jsonOutput)
     #response.headers["Content-Type"] = "application/json"
     #response.headers["App-Version"] = "0.0.1"
+    return jsonOutput
+
+@app.route("/getSecret")
+def getSecrets():
+    jsonOutput = secrets.getJson()
+    print(request.args)
+    if 'id' in request.args:
+        id = int(request.args['id'])
+        print(id)
     return jsonOutput
 
 if __name__ == "__main__":
