@@ -32,7 +32,7 @@ def getSingleSecret():
     print(request.args)
     if 'resource' in request.args:
         dictOutput = json.loads(jsonOutput)
-        if request.args[resource] in dictOutput:
+        if request.args['resource'] in dictOutput:
             singleSecret = dictOutput[request.args[resource]]
         else:
             singleSecret = "Resource does not exist"
