@@ -152,15 +152,29 @@ def getJson():
             temp_json = dict()
             for val in value:
                 for res_name, res_type in val.items():
-                    secret_property = client.get_secret(val['name'])
-                    secret = json.loads(secret_property.value)
-                    temp_json["name"] = secret["name"]
-                    temp_json["clientId"] = secret["clientID"]
-                    temp_json["objectId"] = secret["objectID"]
-                    temp_json["tenantId"] = secret["tenantID"]
-                    temp_json["resource_type"] = val["type"]
-                    break
-            final_json["ServicePrincipal"] = temp_json 
+                    if "spn-1" in val["name"]:
+                        secret_property = client.get_secret(val['name'])
+                        secret = json.loads(secret_property.value)
+                        print("IAC: ", secret)
+                        temp_json["name"] = secret["name"]
+                        temp_json["clientId"] = secret["clientID"]
+                        temp_json["objectId"] = secret["objectID"]
+                        temp_json["tenantId"] = secret["tenantID"]
+                        temp_json["resource_type"] = val["type"]
+                        final_json["iac-spn"] = temp_json 
+                        break
+                    elif "spn-2" in val["name"]:
+                        secret_property = client.get_secret(val['name'])
+                        secret = json.loads(secret_property.value)
+                        print("App: ", secret)
+                        temp_json["name"] = secret["name"]
+                        temp_json["clientId"] = secret["clientID"]
+                        temp_json["objectId"] = secret["objectID"]
+                        temp_json["tenantId"] = secret["tenantID"]
+                        temp_json["resource_type"] = val["type"]
+                        final_json["app-spn"] = temp_json
+                        break
+                    break 
     
     final_json = json.dumps(final_json, indent=4)
     #print(final_json)
