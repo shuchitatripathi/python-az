@@ -30,6 +30,7 @@ def getSecrets():
 def getSingleSecret():
     jsonOutput = secrets.getJson()
     print(request.args)
+    resource = request.args['resource']
     #if 'resource' in request.args:
     #    dictOutput = json.loads(jsonOutput)
     #    if request.args['resource'] in dictOutput:
@@ -39,7 +40,7 @@ def getSingleSecret():
     #else:
     #    singleSecret = "No resource given"
         
-    return request.args
+    return resource
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
