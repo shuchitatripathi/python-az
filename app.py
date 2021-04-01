@@ -40,7 +40,7 @@ def getSingleSecret():
     else:
         singleSecret = "No resource given"
         
-    return resource
+    return singleSecret
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
