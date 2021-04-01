@@ -33,7 +33,7 @@ def getSingleSecret():
     if 'id' in request.args:
         id = int(request.args['id'])
         print(id)
-    return jsonOutput
+    return request.args
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
