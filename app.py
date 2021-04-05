@@ -40,6 +40,8 @@ def getSecrets():
 def getSingleSecret():
     keyvault = selectKeyvault()
     jsonOutput = secrets.getJson(keyvault)
+    if "testhpest" in jsonOutput:
+        return "This is a test response for testhpest keyvault"
     print(request.args)
     resource = request.args['resource']
     if 'resource' in request.args:
