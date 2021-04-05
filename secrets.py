@@ -5,13 +5,13 @@ import ast
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-keyVaultName = os.environ["KEY_VAULT_NAME"]
-KVUri = f"https://{keyVaultName}.vault.azure.net"
+#keyVaultName = os.environ["KEY_VAULT_NAME"]
+#KVUri = f"https://{keyVaultName}.vault.azure.net"
 
-credential = DefaultAzureCredential()
-client = SecretClient(vault_url=KVUri, credential=credential)
+#credential = DefaultAzureCredential()
+#client = SecretClient(vault_url=KVUri, credential=credential)
 
-def allresources():
+def allresources(client):
     allresources = {}    
     temp_list = []
     secretname = os.environ["SECRET_NAME"]
@@ -40,9 +40,13 @@ def allresources():
     return allresources
 
 
-def getJson():
+def getJson(keyvault):
+    KVUri = f"https://{keyvault}.vault.azure.net"
+    credential = DefaultAzureCredential()
+    client = SecretClient(vault_url=KVUri, credential=credential)
+    
     final_json = dict()
-    allresources_json = allresources()
+    allresources_json = allresources(client)
        
     for key, value in allresources_json.items():
         if key == "resourceGroups":
