@@ -8,6 +8,15 @@ app = Flask(__name__)
 
 port = int(os.environ.get('PORT', 5000))
 
+def selectKeyvault():
+    keyvault = ""
+    if 'project' not in request.json or 'env' not in request.json:
+        abort(400)
+    else:
+        keyvault = request.json['project']+request.json['env']
+        
+    return keyvault
+
 @app.route("/")
 def hello():
     html = "<body style=\"background-color:lightgray;\">" \
@@ -20,7 +29,8 @@ def hello():
 
 @app.route("/jsonSecret")
 def getSecrets():
-    jsonOutput = secrets.getJson()
+    keyvault = selectKeyvault()
+    jsonOutput = secrets.getJson(keyvault)
     #response = Flask.Response(jsonOutput)
     #response.headers["Content-Type"] = "application/json"
     #response.headers["App-Version"] = "0.0.1"
@@ -28,7 +38,8 @@ def getSecrets():
 
 @app.route("/getSecret")
 def getSingleSecret():
-    jsonOutput = secrets.getJson()
+    keyvault = selectKeyvault()
+    jsonOutput = secrets.getJson(keyvault)
     print(request.args)
     resource = request.args['resource']
     if 'resource' in request.args:
@@ -41,10 +52,6 @@ def getSingleSecret():
         singleSecret = "No resource given"
         
     return singleSecret
-
-@app.route("/selectKeyvault")
-def selectKeyvault():
-    pass
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=port, debug=True)
