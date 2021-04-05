@@ -45,6 +45,9 @@ def getJson(keyvault):
     credential = DefaultAzureCredential()
     client = SecretClient(vault_url=KVUri, credential=credential)
     
+    if keyvault == "testhpest":
+        return "This is a test response for testhpest keyvault"
+    
     final_json = dict()
     allresources_json = allresources(client)
        
